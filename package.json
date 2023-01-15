@@ -1,0 +1,17 @@
+{
+  "name": "program-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "config.js",
+  "dependencies": {
+    "aws-xray-sdk": "^2.3.6"
+  },
+  "devDependencies": {
+    "aws-sdk": "^2.541.0",
+    "serverless-bundle": "^1.2.5",
+    "serverless-offline": "^5.12.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}

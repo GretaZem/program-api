@@ -41,30 +41,12 @@ provider:
         - !ImportValue ${self:custom.sstApp}-ExtTableArn
 
 functions:
-  # Defines an HTTP API endpoint that calls the main function in postRegistrations.js
-  # - path: url path is /registrations
-  # - method: POST request
-  # - cors: enabled CORS (Cross-Origin Resource Sharing) for browser cross
-  #     domain api call
-  # - authorizer: authenticate using the AWS IAM role
-  postRegistration:
-    handler: postRegistrations.main
+  allOccasion:
+    handler: handler.main
     events:
       - http:
-          path: registrations
-          method: post
-          cors: true
-          authorizer: aws_iam
-
-  getRegistration:
-    # Defines an HTTP API endpoint that calls the main function in getRegistrations.js
-    # - path: url path is /registrations/{id}
-    # - method: GET request
-    handler: getRegistrations.main
-    events:
-      - http:
-          path: registrations/{id}
-          method: get
+          path: occasions/{proxy+}
+          method: ANY
           cors: true
           authorizer: aws_iam
 

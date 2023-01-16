@@ -41,30 +41,12 @@ provider:
         - !ImportValue ${self:custom.sstApp}-ExtTableArn
 
 functions:
-  # Defines an HTTP API endpoint that calls the main function in postOccasion.js
-  # - path: url path is /occasions
-  # - method: POST request
-  # - cors: enabled CORS (Cross-Origin Resource Sharing) for browser cross
-  #     domain api call
-  # - authorizer: authenticate using the AWS IAM role
-  postOccasion:
-    handler: postOccasions.main
+  allOccasion:
+    handler: handler.main
     events:
       - http:
-          path: occasions
-          method: post
-          cors: true
-          authorizer: aws_iam
-
-  getOccasion:
-    # Defines an HTTP API endpoint that calls the main function in getOccasion.js
-    # - path: url path is /occasions/{id}
-    # - method: GET request
-    handler: getOccasions.main
-    events:
-      - http:
-          path: occasions/{id}
-          method: get
+          path: occasions/{proxy+}
+          method: ANY
           cors: true
           authorizer: aws_iam
 
